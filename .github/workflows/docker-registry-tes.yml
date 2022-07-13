@@ -8,16 +8,16 @@ env:
 jobs:
   push-image-to-docker-hub:  # job name
     runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
-    
     steps:
     - uses: actions/checkout@v2 # first action : checkout source code
     - name: docker login
       run: | # log into docker hub account
         #echo ${{ secrets.DAEMON }}
         #sudo cat ${{ secrets.DAEMON }} > /etc/docker/daemon.json
-        sudo rm -rf /etc/docker/daemon.json
-        sudo echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' >> /etc/docker/daemon.json 
-        cat /etc/docker/daemon.json
+        #sudo rm -rf /etc/docker/daemon.json
+        echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' | sudo tee -a /etc/docker/daemon.json
+        #sudo echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' >> /etc/docker/daemon.json 
+        #cat /etc/docker/daemon.json
         sudo systemctl daemon-reload
         sudo systemctl restart docker
         docker info
