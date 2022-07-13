@@ -14,7 +14,8 @@ jobs:
       run: | # log into docker hub account
         #echo ${{ secrets.DAEMON }}
         #sudo cat ${{ secrets.DAEMON }} > /etc/docker/daemon.json
-        sudo cat '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' > /etc/docker/daemon.json 
+        sudo su
+        cat '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' > /etc/docker/daemon.json 
         cat /etc/docker/daemon.json
         sudo systemctl daemon-reload
         sudo systemctl restart docker
