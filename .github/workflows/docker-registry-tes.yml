@@ -21,7 +21,7 @@ jobs:
         #sudo systemctl daemon-reload
         #sudo systemctl restart docker
         #cat /lib/systemd/system/docker.service
-        la /etc/default
+        ls /etc/default
         docker info
         sudo docker login http://$REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
