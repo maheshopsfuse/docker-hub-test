@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2 # first action : checkout source code
     - name: docker login
       run: | # log into docker hub account
-        echo ${{ secrets.DEAMON }}
+        echo ${{ secrets.DAEMON }}
         cat /etc/docker/daemon.json
         docker login $REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
