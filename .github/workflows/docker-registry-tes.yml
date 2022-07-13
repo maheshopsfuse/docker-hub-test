@@ -13,9 +13,7 @@ jobs:
     - name: docker login
       run: | # log into docker hub account
         echo ${{ secrets.DEAMON }}
-        echo $REGISTRY
-        echo $DOCKER_USERNAME
-        echo $DOCKER_PASSWORD
+        ls /etc/docker/
         docker login $REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
       id: date
