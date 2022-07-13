@@ -20,7 +20,7 @@ jobs:
         #cat /etc/docker/daemon.json
         #sudo systemctl daemon-reload
         #sudo systemctl restart docker
-        sudo cat /etc/docker/key.json
+        ls /lib/systemd/system/
         docker info
         sudo docker login http://$REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
