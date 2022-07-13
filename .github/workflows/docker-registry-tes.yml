@@ -2,7 +2,7 @@ name: Docker Registry Test
 on: [push] # When pushing to any branch then run this action
 # Env variable
 env:
-  DOCKER_USERNAME: ${{secrets.DOCKER_USER}}
+  DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REGISTRY: ${{secrets.REGISTRY}}
 jobs:
@@ -13,7 +13,7 @@ jobs:
     - name: docker login
       run: | # log into docker hub account
         echo ${{ secrets.DEAMON }}
-        echo ${{ $REGISTRY }}
+        echo ${{ REGISTRY }}
         echo ${{ DOCKER_USER }}
         echo ${{ DOCKER_PASSWORD }}
         docker login $REGISTRY -u $DOCKER_USER -p $DOCKER_PASSWORD  
