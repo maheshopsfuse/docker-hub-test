@@ -17,8 +17,8 @@ jobs:
         #sudo su & rm /etc/docker/daemon.json
         #sudo echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' >> /etc/docker/daemon.json 
         #sudo systemctl stop docker
-        sudo rm -rf /var/run/docker.pid
-        sudo systemctl stop docker
+        #sudo rm -rf /var/run/docker.pid
+        #sudo systemctl stop docker
         sudo dockerd --insecure-registry "35.202.29.36"
         #sudo systemctl daemon-reload
         #sudo systemctl start docker
