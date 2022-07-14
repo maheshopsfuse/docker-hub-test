@@ -16,9 +16,9 @@ jobs:
         #echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , insecure-registries: ["35.202.29.36"]}' | sudo tee -a /etc/docker/daemon.json
         #sudo su & rm /etc/docker/daemon.json
         #sudo echo '{exec-opts: [native.cgroupdriver=cgroupfs], cgroup-parent: /actions_job , "insecure-registries": ["35.202.29.36"]}' >> /etc/docker/daemon.json 
-        #sudo systemctl daemon-reload
-        #sudo systemctl restart docker
         sudo dockerd --insecure-registry ["35.202.29.36"]
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
         docker info
         sudo docker login http://$REGISTRY -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
